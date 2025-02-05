@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://do5bxcwluv3s7"]
+
+[ext_resource type="Texture2D" uid="uid://bdnu65o370lci" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_bhhtp"]
+[ext_resource type="PackedScene" uid="uid://d3lnkvgo6go8k" path="res://scenes/components/hurt_component.tscn" id="2_aurie"]
+[ext_resource type="Script" path="res://scenes/objects/trees/large_tree.gd" id="2_xnamq"]
+[ext_resource type="PackedScene" uid="uid://c5ck3qfdib5es" path="res://scenes/components/damage_component.tscn" id="3_h0mt7"]
+[ext_resource type="Shader" path="res://scenes/objects/shake.gdshader" id="4_wi83l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uil1n"]
+resource_local_to_scene = true
+shader = ExtResource("4_wi83l")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pg7x"]
+atlas = ExtResource("1_bhhtp")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_76yvn"]
+radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s5kcq"]
+resource_local_to_scene = true
+shader = ExtResource("4_wi83l")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cny75"]
+size = Vector2(12, 24)
+
+[node name="LargeTree" type="Sprite2D"]
+material = SubResource("ShaderMaterial_uil1n")
+position = Vector2(0, -12)
+texture = SubResource("AtlasTexture_7pg7x")
+script = ExtResource("2_xnamq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_76yvn")
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_aurie")]
+material = SubResource("ShaderMaterial_s5kcq")
+tool = 1
+
+[node name="HurtComponentCollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_cny75")
+debug_color = Color(0.893477, 0.127614, 0.719438, 0.42)
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_h0mt7")]
+max_damage = 5
