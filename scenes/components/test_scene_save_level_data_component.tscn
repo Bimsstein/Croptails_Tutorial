@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2xk26pes6var"]
+
+[ext_resource type="Script" path="res://scenes/components/test_scene_save_level_data_component.gd" id="1_f4i2m"]
+
+[node name="TestSceneSaveLevelDataComponent" type="Node"]
+script = ExtResource("1_f4i2m")

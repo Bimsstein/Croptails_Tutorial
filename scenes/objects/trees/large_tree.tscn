@@ -19,7 +19,7 @@ region = Rect2(16, 0, 32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_76yvn"]
 radius = 5.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eae10"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubiv5"]
 resource_local_to_scene = true
 shader = ExtResource("4_wi83l")
 shader_parameter/shake_intensity = 0.0
@@ -42,7 +42,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_76yvn")
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_aurie")]
-material = SubResource("ShaderMaterial_eae10")
+material = SubResource("ShaderMaterial_ubiv5")
 position = Vector2(0, -13)
 tool = 1
 
